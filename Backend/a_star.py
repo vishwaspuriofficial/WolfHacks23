@@ -56,15 +56,11 @@ class MazeSolver(AStar):
             results.append((x, y + 1))
         return results
 
+
 def solve(pixel_map, width, height):
     solver = MazeSolver(pixel_map, width, height)
     path = solver.astar((0, 0), (499, 499))
     return list(path)
 
-
-pixel_map = get_pixel_map("map500", 500, 500)
-
-path = solve(pixel_map, 500, 500)
-print(path)
 
 
