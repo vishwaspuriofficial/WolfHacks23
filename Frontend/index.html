@@ -22,10 +22,10 @@
     // on button click
     document.getElementById("get_path").addEventListener("click", function(){
         let formData = new FormData();
-        formData.append('starting_x', Math.floor(ay/2));
-        formData.append('starting_y', Math.floor(ax/2));
-        formData.append('ending_x', Math.floor(by/2));
-        formData.append('ending_y', Math.floor(bx/2));
+        formData.append('starting_x', Math.floor(ay/2)+25);
+        formData.append('starting_y', Math.floor(ax/2)+10);
+        formData.append('ending_x', Math.floor(by/2)+25);
+        formData.append('ending_y', Math.floor(bx/2)+10);
         formData.append('map_name', 'map500new');
         fetch("/api/get_path", {
           method: "POST",

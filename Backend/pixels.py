@@ -8,11 +8,11 @@ class Vec2:
 
 
 class PixelType(Enum):
-    NONE = 0
+    NONE = 1000
     BORDER = 100000
-    WATER = 100
-    FOREST = 10
-    ROAD = 5
+    WATER = 6000
+    FOREST = 2000
+    ROAD = 10
 
 
 class Pixel:
