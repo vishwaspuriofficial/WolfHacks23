@@ -7,11 +7,12 @@
     <title>Document</title>
     
 </head>
-<body>
+<body >
     <div class="wrapper" style="position: absolute; top: 0; left: 0;">
             <img id="map" src="../Backend/MapSmall.png" width="85%" height="auto">  
-            <button onclick="del()">Reset</button>  
-    </div>
+            <button onclick="del()">Reset</button> 
+        </div>
+        <canvas id="canvas" width="85%" height="auto" style="background-color: black;"> </canvas>
     
 </body>
 <script> 
@@ -41,7 +42,17 @@
     }
 
     function path(array) {
+        for (const pix of array){
+            console.log(pix);
+            const img = new Image(10, 10);
+            img.src = "path.png"; 
+            img.id = "Path";
+            img.style=`position: absolute; top:${pix[0]-5}px; left:${pix[1]-5}px`;
+            document.body.appendChild(img);
+        }
     }
+
+    
     
 </script>
 </html>
