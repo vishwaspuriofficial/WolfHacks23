@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="wrapper" style="position: absolute; top: 0; left: 0;">
+            <img id="map" src="map.png" width="500px" height="500px">  
+            <button onclick="del()">Reset</button>  
+    </div>
+    
+</body>
+<script> 
+    var count = 0
+    map.onclick = function(e) {
+        console.log(e.offsetX,e.offsetY)
+        if (count==0) {
+            const img = new Image(50, 50);
+            img.id = "A";
+            img.src = "A.png"; 
+            img.style=`position: absolute; top:${e.offsetY-50}px; left:${e.offsetX-25}px`;
+            document.body.appendChild(img);
+        }
+        else if (count==1) {
+            const img = new Image(50, 50);
+            img.src = "B.png"; 
+            img.id = "B";
+            img.style=`position: absolute; top:${e.offsetY-50}px; left:${e.offsetX-25}px`;
+            document.body.appendChild(img);
+        }
+        count+=1
+      };
+    function del() {
+        count=0;
+        document.getElementById("A").remove();
+        document.getElementById("B").remove();
+    }
+    
+</script>
+</html>
