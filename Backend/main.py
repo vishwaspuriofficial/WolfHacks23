@@ -10,7 +10,7 @@ def plotSensor(x, y):
     plt.plot(x, y, marker='x', color="black")
 
 
-image = img.imread("Map1.png")
+image = img.imread("Backend/Map1.png")
 plotSensor(100, 100)
 plt.imshow(image)
 plt.show()
