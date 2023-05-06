@@ -10,7 +10,7 @@ def get_pixel_map(map_name, width, height):
     mp.parse_feature(f'{map_name}/highway.png', PixelType.ROAD)
     mp.parse_feature(f'{map_name}/water.png', PixelType.WATER)
     mp.parse_feature(f'{map_name}/natural.png', PixelType.FOREST)
-    mp.parse_feature(f'{map_name}/coastline.png', PixelType.BORDER)
+    # mp.parse_feature(f'{map_name}/coastline.png', PixelType.BORDER)
     return mp.pixels
 
 def print_map(map):
