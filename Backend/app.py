@@ -28,6 +28,7 @@ def get_path():
     map_name = request.form.get('map_name')
     width, height = pixel_maps[map_name]
     pixel_map = get_pixel_map(map_name, width, height)
+    print(f"solving at {staring_x}, {staring_y} to {ending_x}, {ending_y}")
     path = solve(pixel_map, width, height, (staring_x, staring_y), (ending_x, ending_y))
     return jsonify({
         'path': path,
