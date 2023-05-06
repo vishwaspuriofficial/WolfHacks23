@@ -9,7 +9,7 @@
 </head>
 <body >
     <div class="wrapper" style="position: absolute; top: 0; left: 0;">
-            <img id="map" src="map1000/full.png" width="85%" height="auto">
+            <img id="map" src="map1000/full.png" width="100%" height="auto">
             <button onclick="del()">Reset</button>
             <button id="get_path">Get path</button>
         </div>
@@ -26,7 +26,7 @@
         formData.append('starting_y', Math.floor(ay/2));
         formData.append('ending_x', Math.floor(bx/2));
         formData.append('ending_y', Math.floor(by/2));
-        formData.append('map_name', 'map500');
+        formData.append('map_name', 'map500new');
         fetch("/api/get_path", {
           method: "POST",
           body: formData
