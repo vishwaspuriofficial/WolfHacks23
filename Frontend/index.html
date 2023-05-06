@@ -34,7 +34,7 @@
             console.log("Request complete! response:", res);
             const data = await res.json();
             const path = data.path;
-            console.log(data)
+            console.log(path)
             draw_path(path);
         });
     });
@@ -65,6 +65,7 @@
         count=0;
         document.getElementById("A").remove();
         document.getElementById("B").remove();
+        document.getElementById("Path").remove();
     }
 
     function draw_path(array) {
