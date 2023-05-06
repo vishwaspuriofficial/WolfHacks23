@@ -12,18 +12,20 @@
             <img id="map" src="map500/full.png" width="85%" height="auto">
             <button onclick="del()">Reset</button>
             <button id="get_path">Get path</button>
-
         </div>
-        <canvas id="canvas" width="85%" height="auto" style="background-color: black;"> </canvas>
 </body>
 <script>
+    var ax = 0;
+    var ay = 0;
+    var bx = 0;
+    var by = 0;
     // on button click
     document.getElementById("get_path").addEventListener("click", function(){
         let formData = new FormData();
-        formData.append('starting_x', 0);
-        formData.append('starting_y', 0);
-        formData.append('ending_x', 49);
-        formData.append('ending_y', 49);
+        formData.append('starting_x', ay);
+        formData.append('starting_y', ax);
+        formData.append('ending_x', bx);
+        formData.append('ending_y', by);
         formData.append('map_name', 'map500');
         fetch("/api/get_path", {
           method: "POST",
@@ -32,6 +34,7 @@
             console.log("Request complete! response:", res);
             const data = await res.json();
             const path = data.path;
+            console.log(data)
             draw_path(path);
         });
     });
@@ -42,14 +45,18 @@
             const img = new Image(50, 50);
             img.id = "A";
             img.src = "A.png"; 
-            img.style=`position: absolute; top:${e.offsetY-50}px; left:${e.offsetX-25}px`;
+            ay = e.offsetY-50
+            ax = e.offsetX-25
+            img.style=`position: absolute; top:${ay}px; left:${ax}px`;
             document.body.appendChild(img);
         }
         else if (count==1) {
             const img = new Image(50, 50);
             img.src = "B.png"; 
             img.id = "B";
-            img.style=`position: absolute; top:${e.offsetY-50}px; left:${e.offsetX-25}px`;
+            by = e.offsetY-50
+            bx = e.offsetX-25
+            img.style=`position: absolute; top:${by}px; left:${bx}px`;
             document.body.appendChild(img);
         }
         count+=1
