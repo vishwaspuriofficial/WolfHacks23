@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List
 from pixels import Pixel, Vec2, PixelType
-from map_parser import MapParser
+from map_parser import MapParser, init_empty_map
 from astar import AStar
 
 
@@ -27,8 +27,8 @@ class MazeSolver(AStar):
 
     def __init__(self, pixel_map, width, height):
         self.lines = pixel_map
-        self.width = 32
-        self.height = 32
+        self.width = width
+        self.height = height
 
     def heuristic_cost_estimate(self, n1: PixelType, n2: PixelType):
         """computes the 'direct' distance between two (x,y) tuples"""
@@ -45,16 +45,26 @@ class MazeSolver(AStar):
             nodes that can be reached (=any adjacent coordinate that is not a wall)
         """
         x, y = node
-        return[(nx, ny) for nx, ny in[(x, y - 1), (x, y + 1), (x - 1, y), (x + 1, y)]if 0 <= nx < self.width and 0 <= ny < self.height]
-
+        results = []
+        if x > 0:
+            results.append((x - 1, y))
+        if x < self.width - 1:
+            results.append((x + 1, y))
+        if y > 0:
+            results.append((x, y - 1))
+        if y < self.height - 1:
+            results.append((x, y + 1))
+        return results
 
 def solve(pixel_map, width, height):
     solver = MazeSolver(pixel_map, width, height)
-    path = solver.astar((0, 0), (10, 10))
+    path = solver.astar((0, 0), (499, 499))
     return list(path)
 
 
 pixel_map = get_pixel_map("map500", 500, 500)
 
+path = solve(pixel_map, 500, 500)
+print(path)
 
-print_map(pixel_map)
+

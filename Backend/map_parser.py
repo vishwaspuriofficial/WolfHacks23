@@ -3,7 +3,14 @@ from pixels import Pixel, Vec2, PixelType
 
 
 def init_empty_map(width: int, height: int) -> list:
-    return [[Pixel(Vec2(x, y), PixelType.NONE) for y in range(height)] for x in range(width)]
+    pixels = []
+    for y in range(height):
+        row = []
+        for x in range(width):
+            row.append(Pixel(Vec2(x, y), PixelType.NONE))
+        pixels.append(row)
+    return pixels
+
 
 
 class MapParser:
@@ -18,11 +25,9 @@ class MapParser:
         x, y = xy
         for i in range(x):
             for j in range(y):
-                pixel = pix[i, j]
+                r, g, b = pix[i, j]
 
-                r, g, b = pixel
                 if r == 255 and g == 255 and b == 255:
-                    pt = PixelType.NONE
+                    continue
                 else:
-                    pt = pixel_type
-                self.pixels[i][j] = Pixel(Vec2(i, j), pt)
+                    self.pixels[i][j] = Pixel(Vec2(i, j), pixel_type)

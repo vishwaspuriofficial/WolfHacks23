@@ -29,6 +29,8 @@ class Pixel:
             return 'W'
         elif self.pixel_type == PixelType.FOREST:
             return 'F'
+        elif self.pixel_type == PixelType.ROAD:
+            return 'R'
 
     def __repr__(self):
         if self.pixel_type == PixelType.NONE:
@@ -39,4 +41,6 @@ class Pixel:
             return 'W'
         elif self.pixel_type == PixelType.FOREST:
             return 'F'
+        elif self.pixel_type == PixelType.ROAD:
+            return 'R'
         # return f'<({self.pos.x}, {self.pos.y}) {self.pixel_type.name}>'
