@@ -10,6 +10,7 @@ app = Flask(__name__)
 # the associated function.
 pixel_maps = {
     "map500": (500, 500),
+    "map500new": (500, 500),
 }
 
 @app.route('/')
