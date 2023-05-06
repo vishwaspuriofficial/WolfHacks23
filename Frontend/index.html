@@ -9,13 +9,32 @@
 </head>
 <body >
     <div class="wrapper" style="position: absolute; top: 0; left: 0;">
-            <img id="map" src="../Backend/MapSmall.png" width="85%" height="auto">  
-            <button onclick="del()">Reset</button> 
+            <img id="map" src="map500/full.png" width="85%" height="auto">
+            <button onclick="del()">Reset</button>
+            <button id="get_path">Get path</button>
+
         </div>
         <canvas id="canvas" width="85%" height="auto" style="background-color: black;"> </canvas>
-    
 </body>
-<script> 
+<script>
+    // on button click
+    document.getElementById("get_path").addEventListener("click", function(){
+        let formData = new FormData();
+        formData.append('starting_x', 0);
+        formData.append('starting_y', 0);
+        formData.append('ending_x', 49);
+        formData.append('ending_y', 49);
+        formData.append('map_name', 'map500');
+        fetch("/api/get_path", {
+          method: "POST",
+          body: formData
+        }).then(async res => {
+            console.log("Request complete! response:", res);
+            const data = await res.json();
+            const path = data.path;
+            draw_path(path);
+        });
+    });
     var count = 0
     map.onclick = function(e) {
         console.log(e.offsetX,e.offsetY)
@@ -41,9 +60,8 @@
         document.getElementById("B").remove();
     }
 
-    function path(array) {
+    function draw_path(array) {
         for (const pix of array){
-            console.log(pix);
             const img = new Image(10, 10);
             img.src = "path.png"; 
             img.id = "Path";
