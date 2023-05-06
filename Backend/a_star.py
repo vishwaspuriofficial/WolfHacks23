@@ -57,9 +57,9 @@ class MazeSolver(AStar):
         return results
 
 
-def solve(pixel_map, width, height):
+def solve(pixel_map, width, height, start, end):
     solver = MazeSolver(pixel_map, width, height)
-    path = solver.astar((0, 0), (499, 499))
+    path = solver.astar(start, end)
     return list(path)
 
 
