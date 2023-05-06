@@ -18,8 +18,11 @@ class MapParser:
         x, y = xy
         for i in range(x):
             for j in range(y):
-                if pix[i, j] != (255, 255, 255):
-                    pt = pixel_type
-                else:
+                pixel = pix[i, j]
+
+                r, g, b = pixel
+                if r == 255 and g == 255 and b == 255:
                     pt = PixelType.NONE
+                else:
+                    pt = pixel_type
                 self.pixels[i][j] = Pixel(Vec2(i, j), pt)

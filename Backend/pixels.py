@@ -21,13 +21,20 @@ class Pixel:
         self.pixel_type = pixel_type
 
     def __str__(self):
-        return f'Pixel: {self.pos.x}, {self.pos.y}, {self.pixel_type.name}'
+        if self.pixel_type == PixelType.NONE:
+            return ' '
+        elif self.pixel_type == PixelType.BORDER:
+            return 'B'
+        elif self.pixel_type == PixelType.WATER:
+            return 'W'
+        elif self.pixel_type == PixelType.FOREST:
+            return 'F'
 
     def __repr__(self):
         if self.pixel_type == PixelType.NONE:
             return ' '
         elif self.pixel_type == PixelType.BORDER:
-            return 'X'
+            return 'B'
         elif self.pixel_type == PixelType.WATER:
             return 'W'
         elif self.pixel_type == PixelType.FOREST:
