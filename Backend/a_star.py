@@ -3,8 +3,10 @@ from typing import List
 from pixels import Pixel, Vec2, PixelType
 from map_parser import MapParser, init_empty_map
 from astar import AStar
+import functools
 
 
+@functools.cache
 def get_pixel_map(map_name, width, height):
     mp = MapParser(width, height)
     mp.parse_feature(f'{map_name}/highway.png', PixelType.ROAD)
@@ -12,6 +14,7 @@ def get_pixel_map(map_name, width, height):
     mp.parse_feature(f'{map_name}/natural.png', PixelType.FOREST)
     # mp.parse_feature(f'{map_name}/coastline.png', PixelType.BORDER)
     return mp.pixels
+
 
 def print_map(map):
     for row in map:
